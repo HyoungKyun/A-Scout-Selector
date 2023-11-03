@@ -310,6 +310,19 @@ namespace A_Scout_Viewer
             cbCam1Pos.SelectedIndexChanged += CBCamPos_SelectedIndexChanged;
             cbCam2Pos.SelectedIndexChanged += CBCamPos_SelectedIndexChanged;
             cbCam3Pos.SelectedIndexChanged += CBCamPos_SelectedIndexChanged;
+
+
+            metroRadioButton1.Checked = true;                  
+            metroRadioButton1.Enabled = false;
+            metroRadioButton2.Enabled = false;
+            metroRadioButton3.Enabled = false;
+            metroRadioButton1.CheckedChanged += new EventHandler(RadioButton_CheckedChanged);
+            metroRadioButton2.CheckedChanged += new EventHandler(RadioButton_CheckedChanged);
+            metroRadioButton3.CheckedChanged += new EventHandler(RadioButton_CheckedChanged);
+
+            tbFrameRate.Enabled = false;
+            tbISO.Enabled = false;
+            tbExposure.Enabled = false;
         }
 
         private void CBCamPos_SelectedIndexChanged(object sender, EventArgs e)
@@ -406,7 +419,9 @@ namespace A_Scout_Viewer
                     //MessageBox.Show("Device open fail! ");
                     return;
                 }
-                CameraArray[0].Enabled = true;                                
+                CameraArray[0].Enabled = true;
+                //metroRadioButton1.Enabled = true;
+
                 if (UserDefineID.Length >= 4)
                 {
                     string firstFour = UserDefineID.Substring(0, 4);
@@ -469,7 +484,7 @@ namespace A_Scout_Viewer
                     return;
                 }
                 CameraArray[1].Enabled = true;
-
+                //metroRadioButton2.Enabled = true;
                 if (UserDefineID.Length >= 4)
                 {
                     string firstFour = UserDefineID.Substring(0, 4);
@@ -533,6 +548,7 @@ namespace A_Scout_Viewer
                 }
 
                 CameraArray[2].Enabled = true;
+                //metroRadioButton3.Enabled = true;
                 if (UserDefineID.Length >= 4)
                 {
                     string firstFour = UserDefineID.Substring(0, 4);
@@ -1255,40 +1271,19 @@ namespace A_Scout_Viewer
 
            
             if (m_MyCamera1 != null)
-            {                
-                m_MyCamera1.SetEnumValue("UserSetSelector", 1); // userset 1
-                Thread.Sleep(300);
-                m_MyCamera1.SetEnumValue("UserSetDefault", 1); // userset 1
-                Thread.Sleep(300);
-                m_MyCamera1.SetCommandValue("UserSetSave"); // userset 1
-                Thread.Sleep(2500);
-
+            {            
                 m_MyCamera1.CloseDevice();
                 m_MyCamera1.DestroyHandle();
             }
 
             if (m_MyCamera2 != null)
             {
-                m_MyCamera2.SetEnumValue("UserSetSelector", 1); // userset 1
-                Thread.Sleep(300);
-                m_MyCamera2.SetEnumValue("UserSetDefault", 1); // userset 1
-                Thread.Sleep(300);
-                m_MyCamera2.SetCommandValue("UserSetSave"); // userset 1
-                Thread.Sleep(2500);
-
                 m_MyCamera2.CloseDevice();
                 m_MyCamera2.DestroyHandle();
             }
 
             if (m_MyCamera3 != null)
             {
-                m_MyCamera3.SetEnumValue("UserSetSelector", 1); // userset 1
-                Thread.Sleep(300);
-                m_MyCamera3.SetEnumValue("UserSetDefault", 1); // userset 1
-                Thread.Sleep(300);
-                m_MyCamera3.SetCommandValue("UserSetSave"); // userset 1
-                Thread.Sleep(2500);
-
                 m_MyCamera3.CloseDevice();
                 m_MyCamera3.DestroyHandle();
             }
@@ -1644,7 +1639,7 @@ namespace A_Scout_Viewer
         
         private void tbFrameRate_Scroll(object sender, ScrollEventArgs e)
         {
-                SetFrameRate();
+             SetFrameRate();
         }
 
         private void GetGain(int Index)
@@ -1724,67 +1719,68 @@ namespace A_Scout_Viewer
             }
         }
 
-        private void SetGain()
+        private void SetGain(int Index)
         {
             int nRet;
             float Gain = 20.0f;
-            if (m_MyCamera1 != null)
+            if (tbISO.Value == 0)
             {
-                if (tbISO.Value == 0)
-                {
-                    Gain = 0.0f;
-                    lbISO.Text = "ISO 50";
-                }
-                else if (tbISO.Value == 1)
-                {
-                    Gain = 10.0f;
-                    lbISO.Text = "ISO 100";
-                }
-                else if (tbISO.Value == 2)
-                {
-                    Gain = 15.0f;
-                    lbISO.Text = "ISO 200";
-                }
-                else if (tbISO.Value == 3)
-                {
-                    Gain = 20.0f;
-                    lbISO.Text = "ISO 400";
-                }
-                else if (tbISO.Value == 4)
-                {
-                    Gain = 25.0f;
-                    lbISO.Text = "ISO 800";
-                }
-                else if (tbISO.Value == 5)
-                {
-                    Gain = 30.0f;
-                    lbISO.Text = "ISO 1600";
-                }
-                else if (tbISO.Value == 6)
-                {
-                    Gain = 35.0f;
-                    lbISO.Text = "ISO 3200";
-                }
-                else if (tbISO.Value == 7)
-                {
-                    Gain = 40.0f;
-                    lbISO.Text = "ISO 6400";
-                }
-                else
-                {
-                    Gain = 45.0f;
-                    lbISO.Text = "ISO 12800";
-                }
+                Gain = 0.0f;
+                lbISO.Text = "ISO 50";
+            }
+            else if (tbISO.Value == 1)
+            {
+                Gain = 10.0f;
+                lbISO.Text = "ISO 100";
+            }
+            else if (tbISO.Value == 2)
+            {
+                Gain = 15.0f;
+                lbISO.Text = "ISO 200";
+            }
+            else if (tbISO.Value == 3)
+            {
+                Gain = 20.0f;
+                lbISO.Text = "ISO 400";
+            }
+            else if (tbISO.Value == 4)
+            {
+                Gain = 25.0f;
+                lbISO.Text = "ISO 800";
+            }
+            else if (tbISO.Value == 5)
+            {
+                Gain = 30.0f;
+                lbISO.Text = "ISO 1600";
+            }
+            else if (tbISO.Value == 6)
+            {
+                Gain = 35.0f;
+                lbISO.Text = "ISO 3200";
+            }
+            else if (tbISO.Value == 7)
+            {
+                Gain = 40.0f;
+                lbISO.Text = "ISO 6400";
+            }
+            else
+            {
+                Gain = 45.0f;
+                lbISO.Text = "ISO 12800";
+            }
+
+            if ((m_MyCamera1 != null)&&(Index ==0))
+            {                
                 m_MyCamera1.SetEnumValue("GainAuto", 0);
                 nRet = m_MyCamera1.SetFloatValue("Gain", Gain);
             }
-            if (m_MyCamera2 != null)
-            {
+            else if ((m_MyCamera2 != null)&&(Index == 1))
+            {                
                 m_MyCamera2.SetEnumValue("GainAuto", 0);
                 nRet = m_MyCamera2.SetFloatValue("Gain", Gain);
             }
-            if (m_MyCamera3 != null)
-            {
+            else if ((m_MyCamera3 != null) && (Index == 2))
+            {                
                 m_MyCamera3.SetEnumValue("GainAuto", 0);
                 nRet = m_MyCamera3.SetFloatValue("Gain", Gain);
             }            
@@ -1793,7 +1789,9 @@ namespace A_Scout_Viewer
 
         private void tbISO_Scroll(object sender, ScrollEventArgs e)
         {
-            SetGain();
+            int Index;
+            Index = GetSelectedRadioButton();
+            SetGain(Index);
         }
 
         private void GetExposureTime(int Index)
@@ -1863,56 +1861,55 @@ namespace A_Scout_Viewer
             }
         }
 
-        private void SetExposureTime()
+        private void SetExposureTime(int Index)
         {
             int nRet;
             float ExposureTime = 500.0f;
-            if (m_MyCamera1 != null)
-            {                
-                if (tbExposure.Value == 0)
-                {
-                    ExposureTime = 100.0f;
-                    lbExposure.Text = "Exposure Time 100us";
-                }
-                else if (tbExposure.Value == 1)
-                {
-                    ExposureTime = 500.0f;
-                    lbExposure.Text = "Exposure Time 500us";
-                }
-                else if (tbExposure.Value == 2)
-                {
-                    ExposureTime = 1000.0f;
-                    lbExposure.Text = "Exposure Time 1000us";
-                }
-                else if (tbExposure.Value == 3)
-                {
-                    ExposureTime = 2000.0f;
-                    lbExposure.Text = "Exposure Time 2000us";
-                }
-                else if (tbExposure.Value == 4)
-                {
-                    ExposureTime = 3000.0f;
-                    lbExposure.Text = "Exposure Time 3000us";
-                }
-                else if (tbExposure.Value == 5)
-                {
-                    ExposureTime = 4000.0f;
-                    lbExposure.Text = "Exposure Time 4000us";
-                }
-                else
-                {
-                    ExposureTime = 5000.0f;
-                    lbExposure.Text = "Exposure Time 5000us";
-                }
-
-                nRet = m_MyCamera1.SetFloatValue("ExposureTime", ExposureTime);
+            if (tbExposure.Value == 0)
+            {
+                ExposureTime = 100.0f;
+                lbExposure.Text = "Exposure Time 100us";
+            }
+            else if (tbExposure.Value == 1)
+            {
+                ExposureTime = 500.0f;
+                lbExposure.Text = "Exposure Time 500us";
+            }
+            else if (tbExposure.Value == 2)
+            {
+                ExposureTime = 1000.0f;
+                lbExposure.Text = "Exposure Time 1000us";
+            }
+            else if (tbExposure.Value == 3)
+            {
+                ExposureTime = 2000.0f;
+                lbExposure.Text = "Exposure Time 2000us";
+            }
+            else if (tbExposure.Value == 4)
+            {
+                ExposureTime = 3000.0f;
+                lbExposure.Text = "Exposure Time 3000us";
+            }
+            else if (tbExposure.Value == 5)
+            {
+                ExposureTime = 4000.0f;
+                lbExposure.Text = "Exposure Time 4000us";
+            }
+            else
+            {
+                ExposureTime = 5000.0f;
+                lbExposure.Text = "Exposure Time 5000us";
             }
 
-            if (m_MyCamera2 != null)
+            if ((m_MyCamera1 != null)&&(Index == 0))
+            {
+                nRet = m_MyCamera1.SetFloatValue("ExposureTime", ExposureTime);
+            }
+            else if ((m_MyCamera2 != null)&&(Index == 1))
             {
                 nRet = m_MyCamera2.SetFloatValue("ExposureTime", ExposureTime);
             }
-            if (m_MyCamera3 != null)
+            else if ((m_MyCamera3 != null)&&(Index == 2))
             {
                 nRet = m_MyCamera3.SetFloatValue("ExposureTime", ExposureTime);
             }            
@@ -1973,7 +1970,9 @@ namespace A_Scout_Viewer
         
         private void tbExposure_Scroll(object sender, ScrollEventArgs e)
         {
-            SetExposureTime();            
+            int Index;
+            Index = GetSelectedRadioButton();
+            SetExposureTime(Index);            
         }
                 
         private void TileState_Click(object sender, EventArgs e)
@@ -2002,15 +2001,31 @@ namespace A_Scout_Viewer
                     m_EnalbeCamCount++;
                 }                
                 InitializeContents(0);
+                metroRadioButton1.Enabled = true;
+                metroRadioButton1.Checked = true;
                 ThreadCallbackStart1();                
             }
             else
             {
+                metroRadioButton1.Enabled = false;
+                metroRadioButton1.Checked = false;
                 ThreadStop1();
                 if (m_EnalbeCamCount > 0)
                 {
                     m_EnalbeCamCount--;
                 }                
+            }
+            if(m_EnalbeCamCount != 0)
+            {
+                tbFrameRate.Enabled = true;
+                tbISO.Enabled = true;
+                tbExposure.Enabled = true;
+            }
+            else
+            {
+                tbFrameRate.Enabled = false;
+                tbISO.Enabled = false;
+                tbExposure.Enabled = false;
             }
         }
 
@@ -2022,16 +2037,32 @@ namespace A_Scout_Viewer
                 {
                     m_EnalbeCamCount++;
                 }
+                metroRadioButton2.Enabled = true;
+                metroRadioButton2.Checked = true;
                 InitializeContents(1);
                 ThreadCallbackStart2();                
             }
             else
             {
+                metroRadioButton2.Enabled = false;
+                metroRadioButton2.Checked = false;
                 ThreadStop2();
                 if (m_EnalbeCamCount > 0)
                 {
                     m_EnalbeCamCount--;
                 }                
+            }
+            if (m_EnalbeCamCount != 0)
+            {
+                tbFrameRate.Enabled = true;
+                tbISO.Enabled = true;
+                tbExposure.Enabled = true;
+            }
+            else
+            {
+                tbFrameRate.Enabled = false;
+                tbISO.Enabled = false;
+                tbExposure.Enabled = false;
             }
         }
 
@@ -2043,16 +2074,32 @@ namespace A_Scout_Viewer
                 {
                     m_EnalbeCamCount++;
                 }
+                metroRadioButton3.Enabled = true;
+                metroRadioButton3.Checked = true;
                 InitializeContents(2);
                 ThreadCallbackStart3();
             }
             else
             {
+                metroRadioButton3.Enabled = false;
+                metroRadioButton3.Checked = false;
                 ThreadStop3();
                 if (m_EnalbeCamCount > 0)
                 {
                     m_EnalbeCamCount--;
                 }
+            }
+            if (m_EnalbeCamCount != 0)
+            {
+                tbFrameRate.Enabled = true;
+                tbISO.Enabled = true;
+                tbExposure.Enabled = true;
+            }
+            else
+            {
+                tbFrameRate.Enabled = false;
+                tbISO.Enabled = false;
+                tbExposure.Enabled = false;
             }
         }
             
@@ -2203,7 +2250,7 @@ namespace A_Scout_Viewer
                 m_MyCamera1.SetEnumValue("UserSetDefault", 1); // userset 1
                 Thread.Sleep(300);
                 m_MyCamera1.SetCommandValue("UserSetSave"); // userset 1
-                Thread.Sleep(2500);
+                Thread.Sleep(1000);
             }
 
             if (m_MyCamera2 != null)
@@ -2213,7 +2260,7 @@ namespace A_Scout_Viewer
                 m_MyCamera2.SetEnumValue("UserSetDefault", 1); // userset 1
                 Thread.Sleep(300);
                 m_MyCamera2.SetCommandValue("UserSetSave"); // userset 1
-                Thread.Sleep(2500);
+                Thread.Sleep(1000);
             }
 
             if (m_MyCamera3 != null)
@@ -2223,7 +2270,7 @@ namespace A_Scout_Viewer
                 m_MyCamera3.SetEnumValue("UserSetDefault", 1); // userset 1
                 Thread.Sleep(300);
                 m_MyCamera3.SetCommandValue("UserSetSave"); // userset 1
-                Thread.Sleep(2500);
+                Thread.Sleep(1000);
             }
         }
 
@@ -2241,6 +2288,46 @@ namespace A_Scout_Viewer
             
             this.Cursor = Cursors.Default;
             TileState.Text = "Camera Location \r" + "settings complete ";
+        }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radio = sender as RadioButton;
+            
+            if (radio != null && radio.Checked)
+            {
+                switch (radio.Name)
+                {
+                    case "metroRadioButton1":
+                        MessageBox.Show("Option 1 selected");
+                        break;
+                    case "metroRadioButton2":
+                        MessageBox.Show("Option 2 selected");
+                        break;
+                    case "metroRadioButton3":
+                        MessageBox.Show("Option 3 selected");
+                        break;
+                }
+            }
+        }
+
+        private int GetSelectedRadioButton()
+        {
+            // 활성화되고 체크된 라디오 버튼이 있는지 확인
+            if (metroRadioButton1.Enabled && metroRadioButton1.Checked)
+            {
+                return 0;
+            }
+            else if (metroRadioButton2.Enabled && metroRadioButton2.Checked)
+            {
+                return 1;
+            }
+            else if (metroRadioButton3.Enabled && metroRadioButton3.Checked)
+            {
+                return 2;
+            }
+                        
+            return 0;
         }
     }
 

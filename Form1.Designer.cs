@@ -57,10 +57,15 @@ namespace A_Scout_Viewer
             this.cbCam1Pos = new MetroFramework.Controls.MetroComboBox();
             this.cbCam2Pos = new MetroFramework.Controls.MetroComboBox();
             this.cbCam3Pos = new MetroFramework.Controls.MetroComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.metroRadioButton3 = new MetroFramework.Controls.MetroRadioButton();
+            this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
+            this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btPreview
@@ -101,7 +106,6 @@ namespace A_Scout_Viewer
             this.TileState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TileState.TileImage = global::A_Scout_Viewer.Properties.Resources.Golf;
             this.TileState.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TileState.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.TileState.UseSelectable = true;
             this.TileState.Click += new System.EventHandler(this.TileState_Click);
             // 
@@ -112,7 +116,7 @@ namespace A_Scout_Viewer
             this.lbFrameRate.AutoSize = false;
             this.lbFrameRate.BackColor = System.Drawing.SystemColors.Window;
             this.lbFrameRate.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbFrameRate.Location = new System.Drawing.Point(927, 559);
+            this.lbFrameRate.Location = new System.Drawing.Point(87, 94);
             this.lbFrameRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbFrameRate.Name = "lbFrameRate";
             this.lbFrameRate.Size = new System.Drawing.Size(408, 50);
@@ -123,7 +127,7 @@ namespace A_Scout_Viewer
             // 
             this.tbFrameRate.BackColor = System.Drawing.Color.Transparent;
             this.tbFrameRate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbFrameRate.Location = new System.Drawing.Point(927, 605);
+            this.tbFrameRate.Location = new System.Drawing.Point(87, 140);
             this.tbFrameRate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbFrameRate.Name = "tbFrameRate";
             this.tbFrameRate.Size = new System.Drawing.Size(407, 38);
@@ -135,7 +139,7 @@ namespace A_Scout_Viewer
             // 
             this.tbISO.BackColor = System.Drawing.Color.Transparent;
             this.tbISO.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbISO.Location = new System.Drawing.Point(927, 720);
+            this.tbISO.Location = new System.Drawing.Point(87, 255);
             this.tbISO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbISO.Name = "tbISO";
             this.tbISO.Size = new System.Drawing.Size(407, 38);
@@ -150,7 +154,7 @@ namespace A_Scout_Viewer
             this.lbISO.AutoSize = false;
             this.lbISO.BackColor = System.Drawing.SystemColors.Window;
             this.lbISO.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbISO.Location = new System.Drawing.Point(927, 678);
+            this.lbISO.Location = new System.Drawing.Point(87, 213);
             this.lbISO.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbISO.Name = "lbISO";
             this.lbISO.Size = new System.Drawing.Size(408, 50);
@@ -162,7 +166,7 @@ namespace A_Scout_Viewer
             this.tbExposure.BackColor = System.Drawing.Color.Transparent;
             this.tbExposure.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbExposure.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbExposure.Location = new System.Drawing.Point(927, 851);
+            this.tbExposure.Location = new System.Drawing.Point(87, 377);
             this.tbExposure.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbExposure.Name = "tbExposure";
             this.tbExposure.Size = new System.Drawing.Size(407, 38);
@@ -177,7 +181,7 @@ namespace A_Scout_Viewer
             this.lbExposure.AutoSize = false;
             this.lbExposure.BackColor = System.Drawing.SystemColors.Window;
             this.lbExposure.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbExposure.Location = new System.Drawing.Point(927, 799);
+            this.lbExposure.Location = new System.Drawing.Point(87, 334);
             this.lbExposure.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbExposure.Name = "lbExposure";
             this.lbExposure.Size = new System.Drawing.Size(408, 50);
@@ -204,7 +208,7 @@ namespace A_Scout_Viewer
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(225, 54);
+            this.pictureBox1.Location = new System.Drawing.Point(225, 85);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(600, 412);
@@ -217,14 +221,14 @@ namespace A_Scout_Viewer
             // lbFPS
             // 
             this.lbFPS.AutoScroll = true;
-            this.lbFPS.AutoScrollMinSize = new System.Drawing.Size(144, 39);
+            this.lbFPS.AutoScrollMinSize = new System.Drawing.Size(118, 33);
             this.lbFPS.AutoSize = false;
             this.lbFPS.BackColor = System.Drawing.SystemColors.Window;
-            this.lbFPS.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbFPS.Location = new System.Drawing.Point(612, 472);
+            this.lbFPS.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbFPS.Location = new System.Drawing.Point(569, 503);
             this.lbFPS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbFPS.Name = "lbFPS";
-            this.lbFPS.Size = new System.Drawing.Size(168, 50);
+            this.lbFPS.Size = new System.Drawing.Size(256, 50);
             this.lbFPS.TabIndex = 14;
             this.lbFPS.Text = "Cam1 FPS : ";
             this.lbFPS.Click += new System.EventHandler(this.lbFPS_Click);
@@ -232,7 +236,7 @@ namespace A_Scout_Viewer
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(863, 54);
+            this.pictureBox2.Location = new System.Drawing.Point(863, 85);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(600, 412);
@@ -245,7 +249,7 @@ namespace A_Scout_Viewer
             // pictureBox3
             // 
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(225, 531);
+            this.pictureBox3.Location = new System.Drawing.Point(225, 562);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(600, 412);
@@ -311,14 +315,14 @@ namespace A_Scout_Viewer
             // lbFPS2
             // 
             this.lbFPS2.AutoScroll = true;
-            this.lbFPS2.AutoScrollMinSize = new System.Drawing.Size(144, 39);
+            this.lbFPS2.AutoScrollMinSize = new System.Drawing.Size(118, 33);
             this.lbFPS2.AutoSize = false;
             this.lbFPS2.BackColor = System.Drawing.SystemColors.Window;
-            this.lbFPS2.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbFPS2.Location = new System.Drawing.Point(1274, 472);
+            this.lbFPS2.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbFPS2.Location = new System.Drawing.Point(1207, 503);
             this.lbFPS2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbFPS2.Name = "lbFPS2";
-            this.lbFPS2.Size = new System.Drawing.Size(168, 50);
+            this.lbFPS2.Size = new System.Drawing.Size(256, 50);
             this.lbFPS2.TabIndex = 15;
             this.lbFPS2.Text = "Cam2 FPS : ";
             this.lbFPS2.Click += new System.EventHandler(this.lbFPS2_Click);
@@ -326,14 +330,14 @@ namespace A_Scout_Viewer
             // lbFPS3
             // 
             this.lbFPS3.AutoScroll = true;
-            this.lbFPS3.AutoScrollMinSize = new System.Drawing.Size(144, 39);
+            this.lbFPS3.AutoScrollMinSize = new System.Drawing.Size(118, 33);
             this.lbFPS3.AutoSize = false;
             this.lbFPS3.BackColor = System.Drawing.SystemColors.Window;
-            this.lbFPS3.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbFPS3.Location = new System.Drawing.Point(612, 947);
+            this.lbFPS3.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbFPS3.Location = new System.Drawing.Point(569, 978);
             this.lbFPS3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbFPS3.Name = "lbFPS3";
-            this.lbFPS3.Size = new System.Drawing.Size(168, 50);
+            this.lbFPS3.Size = new System.Drawing.Size(256, 50);
             this.lbFPS3.TabIndex = 16;
             this.lbFPS3.Text = "Cam3 FPS : ";
             // 
@@ -354,7 +358,7 @@ namespace A_Scout_Viewer
             // 
             this.cbCam1Pos.FormattingEnabled = true;
             this.cbCam1Pos.ItemHeight = 23;
-            this.cbCam1Pos.Location = new System.Drawing.Point(225, 481);
+            this.cbCam1Pos.Location = new System.Drawing.Point(225, 512);
             this.cbCam1Pos.Name = "cbCam1Pos";
             this.cbCam1Pos.Size = new System.Drawing.Size(307, 29);
             this.cbCam1Pos.TabIndex = 22;
@@ -364,7 +368,7 @@ namespace A_Scout_Viewer
             // 
             this.cbCam2Pos.FormattingEnabled = true;
             this.cbCam2Pos.ItemHeight = 23;
-            this.cbCam2Pos.Location = new System.Drawing.Point(863, 481);
+            this.cbCam2Pos.Location = new System.Drawing.Point(863, 512);
             this.cbCam2Pos.Name = "cbCam2Pos";
             this.cbCam2Pos.Size = new System.Drawing.Size(307, 29);
             this.cbCam2Pos.TabIndex = 23;
@@ -374,19 +378,73 @@ namespace A_Scout_Viewer
             // 
             this.cbCam3Pos.FormattingEnabled = true;
             this.cbCam3Pos.ItemHeight = 23;
-            this.cbCam3Pos.Location = new System.Drawing.Point(225, 957);
+            this.cbCam3Pos.Location = new System.Drawing.Point(225, 988);
             this.cbCam3Pos.Name = "cbCam3Pos";
             this.cbCam3Pos.Size = new System.Drawing.Size(307, 29);
             this.cbCam3Pos.TabIndex = 24;
             this.cbCam3Pos.UseSelectable = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.metroRadioButton3);
+            this.groupBox2.Controls.Add(this.metroRadioButton2);
+            this.groupBox2.Controls.Add(this.metroRadioButton1);
+            this.groupBox2.Controls.Add(this.tbExposure);
+            this.groupBox2.Controls.Add(this.tbISO);
+            this.groupBox2.Controls.Add(this.lbExposure);
+            this.groupBox2.Controls.Add(this.tbFrameRate);
+            this.groupBox2.Controls.Add(this.lbISO);
+            this.groupBox2.Controls.Add(this.lbFrameRate);
+            this.groupBox2.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox2.Location = new System.Drawing.Point(863, 568);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(599, 449);
+            this.groupBox2.TabIndex = 25;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Camera Setting";
+            // 
+            // metroRadioButton3
+            // 
+            this.metroRadioButton3.AutoSize = true;
+            this.metroRadioButton3.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroRadioButton3.Location = new System.Drawing.Point(375, 54);
+            this.metroRadioButton3.Name = "metroRadioButton3";
+            this.metroRadioButton3.Size = new System.Drawing.Size(84, 19);
+            this.metroRadioButton3.TabIndex = 17;
+            this.metroRadioButton3.Text = "Camera 3";
+            this.metroRadioButton3.UseSelectable = true;
+            // 
+            // metroRadioButton2
+            // 
+            this.metroRadioButton2.AutoSize = true;
+            this.metroRadioButton2.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroRadioButton2.Location = new System.Drawing.Point(230, 54);
+            this.metroRadioButton2.Name = "metroRadioButton2";
+            this.metroRadioButton2.Size = new System.Drawing.Size(84, 19);
+            this.metroRadioButton2.TabIndex = 16;
+            this.metroRadioButton2.Text = "Camera 2";
+            this.metroRadioButton2.UseSelectable = true;
+            // 
+            // metroRadioButton1
+            // 
+            this.metroRadioButton1.AutoSize = true;
+            this.metroRadioButton1.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.metroRadioButton1.Location = new System.Drawing.Point(85, 54);
+            this.metroRadioButton1.Name = "metroRadioButton1";
+            this.metroRadioButton1.Size = new System.Drawing.Size(84, 19);
+            this.metroRadioButton1.TabIndex = 15;
+            this.metroRadioButton1.Text = "Camera 1";
+            this.metroRadioButton1.UseSelectable = true;
+            // 
             // A_Scout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 30F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1520, 1021);
+            this.ClientSize = new System.Drawing.Size(1510, 1046);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.cbCam3Pos);
             this.Controls.Add(this.cbCam2Pos);
             this.Controls.Add(this.cbCam1Pos);
@@ -397,18 +455,12 @@ namespace A_Scout_Viewer
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbFPS);
-            this.Controls.Add(this.tbExposure);
-            this.Controls.Add(this.tbISO);
-            this.Controls.Add(this.lbExposure);
-            this.Controls.Add(this.tbFrameRate);
-            this.Controls.Add(this.lbISO);
-            this.Controls.Add(this.lbFrameRate);
             this.Controls.Add(this.TileState);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btPreview);
-            this.Font = new System.Drawing.Font("Arial Black", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "A_Scout";
             this.Padding = new System.Windows.Forms.Padding(38, 100, 38, 32);
@@ -419,6 +471,8 @@ namespace A_Scout_Viewer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -449,6 +503,10 @@ namespace A_Scout_Viewer
         private MetroFramework.Controls.MetroComboBox cbCam1Pos;
         private MetroFramework.Controls.MetroComboBox cbCam2Pos;
         private MetroFramework.Controls.MetroComboBox cbCam3Pos;
+        private GroupBox groupBox2;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
+        private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
     }
 }
 
